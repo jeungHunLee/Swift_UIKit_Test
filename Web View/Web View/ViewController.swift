@@ -46,23 +46,28 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     @IBAction func btnUrlGo(_ sender: UIButton) {
-        
+        if urlTextField.text!.hasPrefix("https://") {    //text가 "https://"로 시작하는지 확인
+            loadWebPage(urlTextField.text!)
+        } else {
+            urlTextField.text! = "https://" + urlTextField.text!
+            loadWebPage(urlTextField.text!)
+        }
     }
     
     @IBAction func btnGoBack(_ sender: UIBarButtonItem) {
-        
+        web.goBack()
     }
     
     @IBAction func btnGoForward(_ sender: UIBarButtonItem) {
-        
+        web.goForward()
     }
     
     @IBAction func btnReload(_ sender: UIBarButtonItem) {
-        
+        web.reload()
     }
     
     @IBAction func btnStop(_ sender: UIBarButtonItem) {
-        
+        web.stopLoading()
     }
 }
 
